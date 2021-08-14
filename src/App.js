@@ -4,11 +4,12 @@ import './App.css';
 import Searchbar from './components/Searchbar/Searchbar';
 import EmptyResults from './components/Results/EmptyResults/EmptyResults';
 import ResultsImages from './components/Results/ResultsImages/ResultsImages';
+import WaitingResults from './components/Results/WaitingResults/WaitingResults';
 
 const App = () => {
 	const [searchValue, setSearchValue] = useState("")
 	const [isSearching, setIsSearching] = useState(false)
-	const [gifsList, setGifsList] = useState([])
+	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
 
 	useEffect(() => {
@@ -45,14 +46,14 @@ const App = () => {
 				handleSearchValue={handleSearchValue}
 				handleIsSearching={handleIsSearching}
 				isDark={isDark}/>
+				{gifsList === 'waiting' && <WaitingResults isDark={isDark}/> }
 				{
-					gifsList.length > 0 
+					gifsList.length > 0 && searchValue.length > 0 && typeof gifsList === 'object'
 						? <ResultsImages 
 							gifsList={gifsList}
 							isSearching={isSearching}
 							isDark={isDark}/>
-						: <EmptyResults 
-							isDark={isDark}/> 
+						:   typeof gifsList === 'object' && <EmptyResults />
 				}
 		</div>
 	  </div>

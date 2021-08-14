@@ -6,7 +6,9 @@ const ResultsImages = ({isDark, gifsList, isSearching}) => {
 		<main className="ResultsImages">
 			<h3 className={`ResultsImages-title ${isDark && 'ResultsImages-title-dark'}`}>Resultados de la búsqueda</h3>
 			<article className={`ResultsImages-list ${isDark && 'ResultsImages-list-dark'}`}>
-				{gifsList.map(gif =>{
+				{
+				typeof gifsList !== 'string' &&
+				gifsList.map(gif =>{
 						return(
 							<a 
 								key={gif.id}	
