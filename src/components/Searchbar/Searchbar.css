@@ -1,0 +1,49 @@
+.Searchbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 2rem 0;
+}
+
+.Searchbar-title {
+	font-size: 3.6rem;
+	color: #572ee5;
+	margin-bottom: 3rem;
+}
+
+.Searchbar-title span {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.Searchbar-inputContainer {
+	display: flex;
+}
+
+.Searchbar-input {
+	padding: 2rem;
+	width: 55rem;
+	border: 1px solid #121212;
+	border-top-left-radius: 6rem;
+	border-bottom-left-radius: 6rem;
+	font-size: 2rem;
+}
+
+.Searchbar-input:focus {
+	outline: none;
+}
+
+.Searchbar-btn {
+	width: 7rem;
+	background-color: #572ee5;
+	border: 1px solid #121212;
+	border-top-right-radius: 6rem;
+	border-bottom-right-radius: 6rem;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.Searchbar-btn:active {
+	transform: scaleY(0.95);
+}
