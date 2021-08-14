@@ -30,4 +30,6 @@
 	border: 2px dotted #111;
 	margin: 1rem;
 	border-radius: 1rem;
+	background-position: contain;
+	background-color: #fff;
 }
