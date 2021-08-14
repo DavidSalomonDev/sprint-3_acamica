@@ -1,0 +1,33 @@
+.ResultsImages {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.ResultsImages-title {
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-size: 2.5rem;
+	color: #572ee5;
+	margin-bottom: 5rem;
+}
+
+.ResultsImages-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	grid-gap: 2rem;
+	padding: 2rem;
+	background-color: #e7e7e7;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.ResultsImages-img {
+	display: inline-flex;
+	width: 35rem;
+	height: 35rem;
+	border: 2px dotted #111;
+	margin: 1rem;
+	border-radius: 1rem;
+}
