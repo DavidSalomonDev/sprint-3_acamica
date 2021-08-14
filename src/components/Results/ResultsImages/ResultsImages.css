@@ -12,6 +12,10 @@
 	margin-bottom: 5rem;
 }
 
+.ResultsImages-title-dark {
+	color: #fff;
+}
+
 .ResultsImages-list {
 	display: flex;
 	flex-wrap: wrap;

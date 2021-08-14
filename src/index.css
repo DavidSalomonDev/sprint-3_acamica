@@ -17,6 +17,13 @@ body {
 		'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.App-container {
 	background-color: #e5e5e5;
 	border-top: 6px solid #6809e1;
+}
+
+.App-container-dark {
+	background-color: #111;
 }

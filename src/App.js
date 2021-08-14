@@ -13,7 +13,7 @@ const App = () => {
 
 	useEffect(() => {
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
-		const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchValue)}&limit=12&api_key=${giphyAPIKey}`
+		const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchValue)}&limit=15&api_key=${giphyAPIKey}`
 		if(isSearching){
 			let request = fetch(url)
 			request
@@ -26,30 +26,37 @@ const App = () => {
 		
 	}, [isSearching, searchValue])
 
-	const handleSearchValue = e => setSearchValue(e.target.value)
-	const handleIsSearching = () => setIsSearching(true)
+	const handleSearchValue = e => {
+		setSearchValue(e.target.value)
+	}
+	const handleIsSearching = e => {
+		e.preventDefault()
+		setIsSearching(true)
+	}
 	const handleIsDark = () => setIsDark(!isDark)
 
 
   return (
-    <div className={`App ${isDark && 'App-dark'}`}>
-      <Navbar isDark={isDark} handleIsDark={handleIsDark}/>
-	  <Searchbar 
-	  	value={searchValue} 
-		handleSearchValue={handleSearchValue}
-		handleIsSearching={handleIsSearching}
-		isDark={isDark}/>
-		{
-			gifsList.length > 0 
-				? <ResultsImages 
-					gifsList={gifsList}
-					isSearching={isSearching}
-					isDark={isDark}/>
-				: <EmptyResults 
-					isDark={isDark}/> 
-		}
-	  
-    </div>
+	  <div className={`App-container ${isDark && 'App-container-dark'}`}>
+		<div className={`App ${isDark && 'App-dark'}`}>
+			<Navbar isDark={isDark} handleIsDark={handleIsDark}/>
+			<Searchbar 
+				value={searchValue} 
+				handleSearchValue={handleSearchValue}
+				handleIsSearching={handleIsSearching}
+				isDark={isDark}/>
+				{
+					gifsList.length > 0 
+						? <ResultsImages 
+							gifsList={gifsList}
+							isSearching={isSearching}
+							isDark={isDark}/>
+						: <EmptyResults 
+							isDark={isDark}/> 
+				}
+		</div>
+	  </div>
+    
   );
 }
 
