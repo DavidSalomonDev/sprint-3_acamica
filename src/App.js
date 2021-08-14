@@ -9,6 +9,7 @@ const App = () => {
 	const [searchValue, setSearchValue] = useState("")
 	const [isSearching, setIsSearching] = useState(false)
 	const [gifsList, setGifsList] = useState([])
+	const [isDark, setIsDark] = useState(false)
 
 	useEffect(() => {
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
@@ -27,21 +28,25 @@ const App = () => {
 
 	const handleSearchValue = e => setSearchValue(e.target.value)
 	const handleIsSearching = () => setIsSearching(true)
+	const handleIsDark = () => setIsDark(!isDark)
 
 
   return (
-    <div className="App">
-      <Navbar />
+    <div className={`App ${isDark && 'App-dark'}`}>
+      <Navbar isDark={isDark} handleIsDark={handleIsDark}/>
 	  <Searchbar 
 	  	value={searchValue} 
 		handleSearchValue={handleSearchValue}
-		handleIsSearching={handleIsSearching}/>
+		handleIsSearching={handleIsSearching}
+		isDark={isDark}/>
 		{
 			gifsList.length > 0 
 				? <ResultsImages 
 					gifsList={gifsList}
-					isSearching={isSearching}/>
-				: <EmptyResults /> 
+					isSearching={isSearching}
+					isDark={isDark}/>
+				: <EmptyResults 
+					isDark={isDark}/> 
 		}
 	  
     </div>

@@ -23,6 +23,10 @@
 	overflow-y: scroll;
 }
 
+.ResultsImages-list-dark {
+	background-color: #121212;
+}
+
 .ResultsImages-img {
 	display: inline-flex;
 	width: 35rem;

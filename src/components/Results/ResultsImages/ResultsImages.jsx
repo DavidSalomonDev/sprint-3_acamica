@@ -1,11 +1,11 @@
 import React from 'react'
 import './ResultsImages.css'
 
-const ResultsImages = ({gifsList, isSearching}) => {
+const ResultsImages = ({isDark, gifsList, isSearching}) => {
 	return (
 		<main className="ResultsImages">
 			<h3 className='ResultsImages-title'>Resultados de la búsqueda</h3>
-			<article className='ResultsImages-list'>
+			<article className={`ResultsImages-list ${isDark && 'ResultsImages-list-dark'}`}>
 				{gifsList.length > 0 
 					? gifsList.map(gif =>{
 						return(

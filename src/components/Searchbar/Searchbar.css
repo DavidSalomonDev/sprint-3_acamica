@@ -12,6 +12,10 @@
 	margin-bottom: 3rem;
 }
 
+.Searchbar-title-dark {
+	color: #fff;
+}
+
 .Searchbar-title span {
 	text-transform: uppercase;
 	font-weight: bold;
@@ -28,6 +32,12 @@
 	border-top-left-radius: 6rem;
 	border-bottom-left-radius: 6rem;
 	font-size: 2rem;
+	background-color: transparent;
+}
+
+.Searchbar-input-dark {
+	color: #fff;
+	border: 1px solid #e7e7e7;
 }
 
 .Searchbar-input:focus {
@@ -35,13 +45,17 @@
 }
 
 .Searchbar-btn {
-	width: 7rem;
+	width: 10rem;
 	background-color: #572ee5;
 	border: 1px solid #121212;
 	border-top-right-radius: 6rem;
 	border-bottom-right-radius: 6rem;
 	cursor: pointer;
 	transition: all 0.3s ease;
+}
+
+.Searchbar-btn-dark {
+	border: 1px solid #e7e7e7;
 }
 
 .Searchbar-btn:active {
