@@ -2,9 +2,15 @@ import React from 'react'
 import './Navbar.css'
 
 const Navbar = ({isDark, handleIsDark}) => {
+	const refreshPage = () =>{
+		window.location.reload(true)
+	}
+
 	return (
-		<nav className="Navbar">
+		<nav className='Navbar'>
 			<img 
+				className='Navbar-logo'
+				onClick={refreshPage}
 				src={isDark ? '/images/logo-black.svg': '/images/logo.svg'} 
 				alt='Gifos' />;
 			<button 

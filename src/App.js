@@ -7,7 +7,7 @@ import ResultsImages from './components/Results/ResultsImages/ResultsImages';
 import WaitingResults from './components/Results/WaitingResults/WaitingResults';
 
 const App = () => {
-	const [searchValue, setSearchValue] = useState("")
+	const [searchValue, setSearchValue] = useState('')
 	const [isSearching, setIsSearching] = useState(false)
 	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
@@ -29,6 +29,7 @@ const App = () => {
 
 	const handleSearchValue = e => {
 		setSearchValue(e.target.value)
+		
 	}
 	const handleIsSearching = e => {
 		e.preventDefault()

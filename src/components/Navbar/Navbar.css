@@ -34,3 +34,7 @@
 .colorBtn:hover {
 	background-color: #50e3c2;
 }
+
+.Navbar-logo {
+	cursor: pointer;
+}
