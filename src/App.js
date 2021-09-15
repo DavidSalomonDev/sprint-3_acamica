@@ -11,6 +11,7 @@ const App = () => {
 	const [isSearching, setIsSearching] = useState(false)
 	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
+	const [autocomplete, setAutocomplete] = useState([])
 
 	useEffect(() => {
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
@@ -46,7 +47,9 @@ const App = () => {
 				value={searchValue} 
 				handleSearchValue={handleSearchValue}
 				handleIsSearching={handleIsSearching}
-				isDark={isDark}/>
+				isDark={isDark}
+				autocomplete={autocomplete}
+				setAutocomplete={setAutocomplete}/>
 				{gifsList === 'waiting' && <WaitingResults isDark={isDark}/> }
 				{
 					gifsList.length > 0 && searchValue.length > 0 && typeof gifsList === 'object'
