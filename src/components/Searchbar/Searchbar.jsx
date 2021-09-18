@@ -1,7 +1,17 @@
 import React from 'react'
+import Autocomplete from './Autocomplete/Autocomplete'
 import './Searchbar.css'
 
-const Searchbar = ({searchValue, handleSearchValue, handleIsSearching, isDark}) => {
+const Searchbar = ({
+	searchValue, 
+	handleSearchValue, 
+	handleIsSearching,
+	suggestions,
+	setSuggestions,
+	isSearching, 
+	isDark}) => {
+
+
 	return (
 		<div className='Searchbar'>
 			<h2 className={`Searchbar-title ${isDark && 'Searchbar-title-dark'}`}>¡Inspirate y busca los mejores <span>gifs!</span></h2>	
@@ -19,7 +29,17 @@ const Searchbar = ({searchValue, handleSearchValue, handleIsSearching, isDark}) 
 					onClick={handleIsSearching}>
 						<img src='/images/icon-search-mod-noc.svg' alt="submit"/>
 				</button>
+
+				{suggestions.length > 0 &&
+				<Autocomplete 
+				suggestions={suggestions} 
+				setSuggestions={setSuggestions}
+				isSearching={isSearching}
+				searchValue={searchValue}
+				isDark={isDark} />
+			}
 			</form>
+			
 		</div>
 	)
 }

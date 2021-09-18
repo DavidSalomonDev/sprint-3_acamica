@@ -1,7 +1,7 @@
 import React from 'react'
 import './ResultsImages.css'
 
-const ResultsImages = ({isDark, gifsList, isSearching}) => {
+const ResultsImages = ({isDark, gifsList}) => {
 	return (
 		<main className="ResultsImages">
 			<h3 className={`ResultsImages-title ${isDark && 'ResultsImages-title-dark'}`}>Resultados de la búsqueda</h3>

@@ -11,12 +11,15 @@ const App = () => {
 	const [isSearching, setIsSearching] = useState(false)
 	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
+	const [suggestions, setSuggestions] = useState([1,2,3,5,8])
+	
 
+	// Use effect to fetch Gifs
 	useEffect(() => {
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
-		const url = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchValue)}&limit=15&api_key=${giphyAPIKey}`
+		const gifsUrl = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchValue)}&limit=15&api_key=${giphyAPIKey}`
 		if(isSearching){
-			let request = fetch(url)
+			let request = fetch(gifsUrl)
 			request
 				.then(response => response.json())
 				.then(data =>{
@@ -27,10 +30,31 @@ const App = () => {
 		
 	}, [isSearching, searchValue])
 
+	// Use effect for gifs
+	useEffect(() => {
+		let isMounted = true;      
+		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
+		const suggestionsUrl = `https://api.giphy.com/v1/gifs/search/tags?api_key=${giphyAPIKey}&q=${searchValue}`
+
+		let request = fetch(suggestionsUrl)
+			request
+				.then(response => response.json())
+				.then(data =>{
+					if(isMounted){setSuggestions(data.data)}
+					})
+				
+			return () => {isMounted = false}
+			
+		
+		}, [searchValue, setSuggestions, isSearching]
+	)
+
+	
+
 	const handleSearchValue = e => {
 		setSearchValue(e.target.value)
-		
 	}
+	
 	const handleIsSearching = e => {
 		e.preventDefault()
 		setIsSearching(true)
@@ -46,6 +70,8 @@ const App = () => {
 				value={searchValue} 
 				handleSearchValue={handleSearchValue}
 				handleIsSearching={handleIsSearching}
+				setSuggestions={setSuggestions}
+				suggestions={suggestions}
 				isDark={isDark}/>
 				{gifsList === 'waiting' && <WaitingResults isDark={isDark}/> }
 				{

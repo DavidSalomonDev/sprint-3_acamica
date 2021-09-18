@@ -1,0 +1,52 @@
+.Autocomplete {
+	display: flex;
+	margin: 7rem auto;
+	border: 1px solid #572ee5;
+	border-radius: 1rem;
+	background-color: #eee;
+	width: 65rem;
+	position: absolute;
+	z-index: 1000;
+	overflow: hidden;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+@media only screen and (max-width: 42.5rem) {
+	/*Small smartphones [325px -> 425px]*/
+	.Autocomplete {
+		width: 45rem;
+	}
+}
+
+.Autocomplete.hide {
+	opacity: 0;
+}
+
+.Autocomplete ul {
+	width: 100%;
+	transition: all 0.2s ease-out;
+}
+
+.Autocomplete li {
+	display: block;
+	padding: 1rem;
+	list-style: none;
+	cursor: pointer;
+	font-size: 2rem;
+	transition: all 0.2s ease-out;
+}
+
+.Autocomplete li:hover {
+	background-color: #bbb;
+}
+div.dark,
+input.dark,
+button.dark,
+h2.dark,
+h3.dark,
+ul.dark {
+	color: #eee;
+	background-color: #222;
+	transition: all 0.3s ease-in-out;
+}
