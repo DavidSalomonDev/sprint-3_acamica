@@ -12,12 +12,13 @@ const App = () => {
 	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
 	const [suggestions, setSuggestions] = useState([])
+	const [searchResult, setSearchResult] = useState('')
 	
 
 	// Use effect to fetch Gifs
 	useEffect(() => {
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
-		const gifsUrl = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchValue)}&limit=15&api_key=${giphyAPIKey}`
+		const gifsUrl = `https://api.giphy.com/v1/gifs/search?q=${encodeURI(searchResult)}&limit=15&api_key=${giphyAPIKey}`
 		if(isSearching){
 			let request = fetch(gifsUrl)
 			request
@@ -28,7 +29,7 @@ const App = () => {
 				})
 		}
 		
-	}, [isSearching, searchValue])
+	}, [isSearching, searchResult])
 
 	// Use effect for gifs
 	useEffect(() => {
@@ -51,16 +52,20 @@ const App = () => {
 
 	const handleSuggestion = e => {
 		setIsSearching(true)
-		setSearchValue(e.target.innerText)
+		setSearchResult(e.target.innerText)
+		setSearchValue('')
 	}
 
 	const handleSearchValue = e => {
 		setSearchValue(e.target.value)
+		setSearchResult(e.target.value)
 	}
 	
 	const handleIsSearching = e => {
 		e.preventDefault()
 		setIsSearching(true)
+		setSearchValue('')
+
 	}
 	const handleIsDark = () => setIsDark(!isDark)
 
@@ -80,7 +85,7 @@ const App = () => {
 				isDark={isDark}/>
 				{gifsList === 'waiting' && <WaitingResults isDark={isDark}/> }
 				{
-					gifsList.length > 0 && searchValue.length > 0 && typeof gifsList === 'object'
+					gifsList.length > 0 && searchResult.length > 0 && typeof gifsList === 'object'
 						? <ResultsImages 
 							gifsList={gifsList}
 							isSearching={isSearching}
