@@ -4,11 +4,12 @@ import './Searchbar.css'
 
 const Searchbar = ({
 	searchValue, 
+	setSearchValue,
 	handleSearchValue, 
 	handleIsSearching,
 	suggestions,
+	handleSuggestion, 
 	setSuggestions,
-	isSearching, 
 	isDark}) => {
 
 
@@ -33,9 +34,10 @@ const Searchbar = ({
 				{suggestions.length > 0 &&
 				<Autocomplete 
 				suggestions={suggestions} 
+				handleSearchValue={handleSearchValue}
+				handleSuggestion={handleSuggestion}
 				setSuggestions={setSuggestions}
-				isSearching={isSearching}
-				searchValue={searchValue}
+				setSearchValue={setSearchValue}
 				isDark={isDark} />
 			}
 			</form>

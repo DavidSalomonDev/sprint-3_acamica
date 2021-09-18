@@ -1,11 +1,12 @@
 import React from 'react'
 import './Autocomplete.css'
 
-const Autocomplete = ({isDark, suggestions}) => {
+const Autocomplete = ({isDark, suggestions, handleSuggestion}) => {
 	
 
+
 	const suggestionsList = suggestions.map((suggestion, idx) => {
-		return <li key={idx}><img src="/images/icon-search.svg" alt="scope" /> {suggestion.name}</li>
+		return <li key={idx} onClick={handleSuggestion}><img src="/images/icon-search.svg" alt="scope" /> {suggestion.name}</li>
 	})
 
 	return (

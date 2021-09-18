@@ -11,7 +11,7 @@ const App = () => {
 	const [isSearching, setIsSearching] = useState(false)
 	const [gifsList, setGifsList] = useState('waiting')
 	const [isDark, setIsDark] = useState(false)
-	const [suggestions, setSuggestions] = useState([1,2,3,5,8])
+	const [suggestions, setSuggestions] = useState([])
 	
 
 	// Use effect to fetch Gifs
@@ -49,7 +49,10 @@ const App = () => {
 		}, [searchValue, setSuggestions, isSearching]
 	)
 
-	
+	const handleSuggestion = e => {
+		setIsSearching(true)
+		setSearchValue(e.target.innerText)
+	}
 
 	const handleSearchValue = e => {
 		setSearchValue(e.target.value)
@@ -69,8 +72,10 @@ const App = () => {
 			<Searchbar 
 				value={searchValue} 
 				handleSearchValue={handleSearchValue}
+				handleSuggestion={handleSuggestion}
 				handleIsSearching={handleIsSearching}
 				setSuggestions={setSuggestions}
+				setSearchValue={setSearchValue}
 				suggestions={suggestions}
 				isDark={isDark}/>
 				{gifsList === 'waiting' && <WaitingResults isDark={isDark}/> }
