@@ -6,14 +6,17 @@ const WaitingResults = ({isDark}) => {
 	const [trends, setTrends] = useState([])
 
 	useEffect(() => {
+		let isMounted = true;      
 		const giphyAPIKey = 'NJ9tSPN3FIDxmPY3DGf2MdZgjTz7wlKS'
 		const trendsUrl = `https://api.giphy.com/v1/gifs/trending?limit=15&api_key=${giphyAPIKey}`
 		let request = fetch(trendsUrl)
 		request
 			.then(response => response.json())
 			.then(data =>{
-				setTrends(data.data)
+				if(isMounted){setTrends(data.data)}
 				})
+
+		return () => {isMounted = false}
 		}, [trends])
 
 		const trendsList = trends.map(gif =>{
